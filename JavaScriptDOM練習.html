@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptDOM練習</title>
+    <style>
+        button {color: lightyellow;background-color: darkseagreen;font-size: larger;font-family:Cambria;}
+        
+    </style>
+</head>
+<body onload="currenttime()"><!--即時報時要設定讀取時回報funtion-->
+    <p>請按下按鈕</p>
+    <button onclick="myconfirm()">按按看</button>
+    <p id ='demotext'></p>
+    <script>
+        function myconfirm(){
+            let text;
+            if (confirm('請選擇按鈕')==true){
+                text = "你按下了確定按鈕";
+            }
+            else{text = "你按下了取消按鈕";}
+            document.getElementById('demotext').innerHTML=text
+        }
+        
+    </script>
+    <br>
+    <button onclick='alert("Hello!")'>Say Hello!</button><!--key in the element-->
+    <br>
+    <br>
+    <button onclick='sayHello()'>Say Hello!</button><!--key in the function-->
+    <script>
+        function sayHello(){alert('Hello !');};
+    </script>
+    <br>
+    <br>
+    <button id="btn">Say Hello!</button><!--不用onevent目前找到只能用addEventListener-->
+    <script>
+        document.getElementById("btn").addEventListener("click", function() {alert("Hello World!");});
+    </script>
+    <br>
+    <br>
+    <button id="nowtime" onclick="displayDate()">現在時間</button>
+    <div id="demo" style="display: block; color:crimson;background-color:darkseagreen;font-family:monospace;font-size: larger;width: fit-content;margin-top: 15px;margin-right: 15px;margin-bottom: 15px;"></div>
+    <script>
+       
+        function displayDate(){
+            document.getElementById('demo').innerHTML = Date();
+        setTimeout('displayDate()',1000);}    
+    </script>
+    <br><br>
+
+    <p id="current" style="color:brown;background-color:darkseagreen;font-size: larger;font-family:monospace;border: wheat solid 3px;width: fit-content;"></p><!--即時報時要設定<body onload=function()-->
+    <script>
+        function currenttime(){
+            document.getElementById('current').innerHTML= Date();
+            setTimeout('currenttime()',1000);
+        }
+    </script>
+</body>
+</html>
